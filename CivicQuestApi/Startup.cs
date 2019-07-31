@@ -39,7 +39,11 @@ namespace CivicQuestApi
                 app.UseHsts();
             }
 
-            app.UseDefaultFiles();
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("indexOld.html");
+
+            app.UseDefaultFiles(options);
             app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseMvc();
