@@ -2,6 +2,11 @@ const uri = "api/cq";
 const element = document.querySelector("#counter");
 const tableBody = document.querySelector("#todos");
 const addInput = document.querySelector("#add-name");
+const editIdInput = document.querySelector("#edit-id");
+const editNameInput = document.querySelector("#edit-name");
+const editCheckboxInput = document.querySelector("#edit-isComplete");
+const editContainer = document.querySelector("#spoiler");
+const editForm = document.querySelector(".my-form");
 
 let cqs = null;
 
@@ -46,7 +51,10 @@ function addItem() {
 
   fetch(uri, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(item)
   }).then(() => {
     getData();
@@ -60,6 +68,45 @@ function deleteItem(id) {
   })
     .then(() => getData())
     .catch(err => console.error(err));
+}
+
+function editItem(id) {
+  cqs.forEach(item => {
+    if (item.id === id) {
+      editIdInput.value = item.id;
+      editNameInput.value = item.name;
+      editCheckboxInput.checked = item.isComplete;
+    }
+  });
+  editContainer.style.display = "block";
+}
+
+editForm.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const item = {
+    id: editIdInput.value,
+    name: editNameInput.value,
+    isComplete: editCheckboxInput.checked
+  };
+
+  fetch(`${uri}/${editIdInput.value}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(item)
+  })
+    .then(() => {
+      getData();
+    })
+    .catch(err => console.error(err));
+  closeInput();
+});
+
+function closeInput() {
+  editContainer.style.display = "none";
 }
 
 getData();
