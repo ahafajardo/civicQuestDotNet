@@ -26,6 +26,8 @@ namespace CivicQuestApi
         {
             services.AddDbContext<CQContext>(opt =>
                 opt.UseInMemoryDatabase("CQList"));
+            services.AddDbContext<LoginContext>(opt =>
+                opt.UseInMemoryDatabase("LoginList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
