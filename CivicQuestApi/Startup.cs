@@ -45,15 +45,15 @@ namespace CivicQuestApi
             }
 
             // The default html file to serve is "index.html". Let's change that.
-            DefaultFilesOptions options = new DefaultFilesOptions();
-            options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("index.html");
+            // DefaultFilesOptions options = new DefaultFilesOptions();
+            // options.DefaultFileNames.Clear();
+            // options.DefaultFileNames.Add("api/login");
 
-            app.UseDefaultFiles(options);
+            app.UseDefaultFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.GetFullPath(@"wwwroot/build")),
-                RequestPath = new PathString("")
+                FileProvider = new PhysicalFileProvider(Path.GetFullPath("wwwroot/build")),
+                RequestPath = ""
             });
             app.UseHttpsRedirection();
             app.UseMvc();

@@ -19,18 +19,17 @@ namespace CivicQuestApi.Controllers
 
             if (_context.LoginCredentials.Count() == 0)
             {
-                // Create a new CQItem if collection is empty,
-                // which means you can't delete all CQItems.
+                // Create a new LoginCreds if collection is empty,
+                // which means you can't delete all LoginCreds.
                 _context.LoginCredentials.Add(new LoginCreds { userName = "bird", password = "bureau" });
                 _context.SaveChanges();
             }
         }
 
         [HttpGet]
-
         public ActionResult ToLogin()
         {
-            return Redirect("../index.html");
+            return Redirect("../");
         }
 
         // GET: api/login/attempt?userName=""&password=""
@@ -40,10 +39,10 @@ namespace CivicQuestApi.Controllers
             var loginCreds = await _context.LoginCredentials.Where(u => u.userName == user).SingleOrDefaultAsync();
 
             if (loginCreds == null)
-                return Redirect("../../index.html");
+                return RedirectPermanent("../login");
             if (loginCreds.password != pass)
-                return Redirect("../../index.html");
-            return Redirect("../../timesheets.html");
+                return RedirectPermanent("../login");
+            return RedirectPermanent("../../timesheets.html");
         }
     }
 }
