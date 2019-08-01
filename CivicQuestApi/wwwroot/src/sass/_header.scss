@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: $text-color-light;
+  background: $brand-primary;
+}
+
+.header__section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.header__label {
+  margin: $margin;
+  display: block;
+}
+
+.logo {
+  margin: $margin;
+  display: block;
+}

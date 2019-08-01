@@ -1,0 +1,60 @@
+.supervisor-entries {
+  padding: 0 $padding/2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: $margin;
+}
+
+.supervisor-entry {
+  margin: $margin/2;
+  display: flex;
+  padding: $padding/2;
+  border-radius: $border-radius;
+  background: $section-primary;
+}
+
+.supervisor-details {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.supervisor-label {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+}
+.supervisor-label__heading {
+  display: block;
+  margin-left: $margin;
+}
+.supervisor-label__name {
+  font-size: $font-size-md;
+}
+.supervisor-label__org {
+  font-size: $font-size-sm;
+}
+
+.supervisor-label__img {
+  height: auto;
+  width: 80px;
+}
+
+.supervisor-info {
+  margin-top: $margin;
+  display: flex;
+  flex-direction: column;
+}
+.supervisor-info__field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.supervisor-info__img {
+  height: auto;
+  width: 20px;
+  margin-right: $margin;
+}

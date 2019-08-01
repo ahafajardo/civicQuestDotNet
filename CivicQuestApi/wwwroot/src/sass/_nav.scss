@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav__item {
+  @include nav-styles;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menu {
+  @include nav-styles;
+}

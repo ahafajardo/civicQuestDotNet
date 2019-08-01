@@ -1,0 +1,56 @@
+.input {
+  width: 100%;
+  padding: $padding/2 $padding $padding * 0.35;
+  border: none;
+  border-bottom: $border-width solid $brand-primary;
+  border-radius: $border-radius;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 $border-width $brand-primary;
+  }
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $text-color-light;
+  border-radius: $border-radius;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  color: $text-color-light;
+  background: $btn-primary;
+
+  &:hover {
+    background: scale-color($btn-primary, $lightness: $darken-factor);
+  }
+}
+.btn--secondary {
+  color: $text-color-light;
+  background: $btn-secondary;
+
+  &:hover {
+    background: scale-color($btn-secondary, $lightness: $darken-factor);
+  }
+}
+.btn--tertiary {
+  color: $text-color-light;
+  background: $btn-tertiary;
+
+  &:hover {
+    background: scale-color($btn-tertiary, $lightness: $darken-factor);
+  }
+}
+.btn--danger {
+  color: $text-color-light;
+  background: $btn-danger;
+
+  &:hover {
+    background: scale-color($btn-danger, $lightness: $darken-factor);
+  }
+}

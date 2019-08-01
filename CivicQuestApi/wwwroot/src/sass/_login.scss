@@ -1,0 +1,33 @@
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.login-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: $border-radius;
+  padding: $padding/2;
+  flex-direction: column;
+  align-items: center;
+  background-color: $section-primary;
+}
+
+.login-field {
+  display: flex;
+  margin-bottom: $margin;
+  flex-direction: column;
+}
+
+.login-field__text {
+  margin: 0 0 $margin/2 0;
+  display: block;
+}
+
+.login-action {
+  width: 50%;
+  padding: $padding/2 $padding;
+}

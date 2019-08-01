@@ -1,0 +1,71 @@
+// Time Entry
+
+.time-entries {
+  padding: 0 $padding/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $margin;
+}
+
+.time-entry {
+  margin-bottom: $margin;
+  display: flex;
+}
+
+.time-details {
+  padding: $padding/2;
+  border-radius: $border-radius;
+  background: $section-primary;
+  flex: 10;
+}
+
+.time-stamps {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.time-stamp {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    margin-right: $margin;
+  }
+}
+
+.time-stamp__text {
+  margin: 0 $margin 0 0;
+}
+
+.time-stamp__input {
+  flex: 5;
+}
+
+.time-info {
+  margin-top: $margin;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-info__desc {
+  margin-top: $margin;
+  resize: vertical;
+}
+
+.time-actions {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.time-action {
+  margin-left: $margin/2;
+  margin-bottom: $margin/2;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

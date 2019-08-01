@@ -1,0 +1,14 @@
+.info-supervisors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: $margin;
+}
+.info-supervisors__value {
+  margin: 0 $margin;
+}
+.info-supervisors__img {
+  height: auto;
+  width: 50px;
+}

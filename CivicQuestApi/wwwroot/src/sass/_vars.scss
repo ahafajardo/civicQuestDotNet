@@ -1,0 +1,43 @@
+// Spacing
+$padding: 1.25rem;
+$margin: 0.625rem;
+
+//Dimensions
+$border-radius: 0.3125rem;
+$border-width: 2px;
+$button-size: 36px;
+
+// Typography
+$font-size-base: 1.15rem;
+$font-size-sm: $font-size-base - 0.5;
+$font-size-md: $font-size-base;
+$font-size-lg: $font-size-base + 0.15;
+$font-size-xl: $font-size-base + 0.5;
+$line-height: 1.25rem;
+$font-family: Roboto, monospace;
+
+//Adjustments:
+$darken-factor: -15%;
+
+/// Colors
+$whitesmoke: whitesmoke;
+$white: white;
+$black: black;
+$cardinal-pink: #750570;
+$red: red;
+$malachite: #25e015;
+$blue: blue;
+$golden-dream: #ebdc37;
+
+// Meaningful names
+$brand-primary: $cardinal-pink;
+$brand-secondary: $white;
+$section-primary: $whitesmoke;
+
+$btn-primary: $malachite;
+$btn-secondary: $blue;
+$btn-tertiary: $golden-dream;
+$btn-danger: $red;
+
+$text-color-light: $white;
+$text-color-dark: $black;

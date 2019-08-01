@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CivicQuest</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="header__section">
+        <h1 class="logo">CivicQuest</h1>
+        <h3 class="header__label">Dashboard</h3>
+        <h1 class="header__label">|</h1>
+        <div class="nav">
+          <a class="nav__item"href="timesheets.html">Timesheet</href="timesheets.html"></a>
+          <a class="nav__item"href="supervisors.html">Supervisors</href="timesheets.html"></a>
+          <a class="nav__item"href="timesheets.html">Projects</href="timesheets.html"></a>
+        </div>
+        <!-- /nav -->
+      </div>
+      <!-- /header__section -->
+      <div class="header__section header__section--reverse">
+        <h3 class="menu">Menu</h3>
+      </div>
+      <!-- /header__section -->
+    </div>
+    <!-- /header -->
+    <div class="info-timer">
+      <img src="images/alarm-clock.png" alt="Alarm Clock" class="info-timer__img" />
+      <h1 class="info-timer__value">0</h1>
+      <p class="info-timer__text">hours worked</p>
+    </div>
+    <div class="time-entries">
+      <div class="time-entry">
+        <div class="time-details">
+          <div class="time-stamps">
+            <div class="time-stamp">
+              <p class="time-stamp__text">Start</p>
+              <input type="text" class="input time-stamp__input" placeholder="00:00:00" />
+            </div>
+            <div class="time-stamp">
+              <p class="time-stamp__text">End</p>
+              <input type="text" class="input time-stamp__input" placeholder="00:00:00" />
+            </div>
+          </div>
+          <!-- /.time-stamps -->
+          <div class="time-info">
+            <label class="time-info__label">Notes</label>
+            <textarea class="input time-info__desc " placeholder="Write notes here..."></textarea>
+          </div>
+          <!-- /.time-info -->
+        </div>
+        <!-- /.time-details -->
+        <div class="time-actions">
+          <a href="#" class="btn btn--primary time-action">start</a>
+          <a href="#" class="btn btn--secondary time-action">edit</a>
+          <a href="#" class="btn btn--danger time-action">del</a>
+        </div>
+        <!-- /.time-actions -->
+      </div>
+      <!-- /.time-entry -->
+    </div>
+    <!-- /.time-entries -->
+  </body>
+</html>

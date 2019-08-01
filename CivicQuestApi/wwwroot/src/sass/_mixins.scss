@@ -1,0 +1,15 @@
+// ------------- MIXINS --------------
+@mixin nav-styles {
+  margin: $margin;
+  padding: $padding/4;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: $text-color-light;
+
+  &:hover {
+    border-bottom: $border-width solid $text-color-light;
+    border-radius: $border-radius;
+  }
+}
+// ------------- MIXINS --------------
