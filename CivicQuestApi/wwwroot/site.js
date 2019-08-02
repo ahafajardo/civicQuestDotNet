@@ -34,7 +34,7 @@ function getData() {
                 <td><button onclick="deleteItem(${item.id})">Delete</button></td>
             </tr>
         `,
-        ""
+        "",
       );
 
       tableBody.innerHTML = tableRows;
@@ -46,16 +46,16 @@ function getData() {
 function addItem() {
   const item = {
     name: addInput.value,
-    isComplete: false
+    isComplete: false,
   };
 
   fetch(uri, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(item)
+    body: JSON.stringify(item),
   }).then(() => {
     getData();
     addInput.value = "";
@@ -64,7 +64,7 @@ function addItem() {
 
 function deleteItem(id) {
   fetch(`${uri}/${id}`, {
-    method: "DELETE"
+    method: "DELETE",
   })
     .then(() => getData())
     .catch(err => console.error(err));
@@ -87,16 +87,16 @@ editForm.addEventListener("submit", e => {
   const item = {
     id: editIdInput.value,
     name: editNameInput.value,
-    isComplete: editCheckboxInput.checked
+    isComplete: editCheckboxInput.checked,
   };
 
   fetch(`${uri}/${editIdInput.value}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(item)
+    body: JSON.stringify(item),
   })
     .then(() => {
       getData();
