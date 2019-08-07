@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using CivicQuestApi.Models;
 
-namespace CivicQuestApi.Models
+namespace CivicQuestApi.Services
 {
     public class CQContext : DbContext
     {

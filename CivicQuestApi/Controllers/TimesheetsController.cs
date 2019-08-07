@@ -22,7 +22,7 @@ namespace CivicQuestApi.Controllers
         [HttpGet, Authorize]
         public ActionResult ToTimesheets()
         {
-            return Redirect("../timesheets.html");
+            return Ok(new { msg = "It's time to d-d-d-d-d-duel!" });
         }
     }
 }

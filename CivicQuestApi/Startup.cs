@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using CivicQuestApi.Models;
+using CivicQuestApi.Services;
 
 
 namespace CivicQuestApi
@@ -49,6 +50,7 @@ namespace CivicQuestApi
                 opt.UseInMemoryDatabase("LoginList"));
             services.AddDbContext<UserContext>(opt =>
                 opt.UseInMemoryDatabase("UserList"));
+            services.AddTransient<AuthenticateService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
