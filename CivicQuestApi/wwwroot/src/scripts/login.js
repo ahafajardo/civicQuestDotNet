@@ -1,12 +1,14 @@
 const uri = "api/login";
 const timeSheetsUrl = "timesheets.html";
-const loginButton = document.querySelector(".login-action");
+const loginForm = document.querySelector(".login");
 const userTextbox = document.querySelector("input[type='text']");
 const passTextbox = document.querySelector("input[type='password']");
 
-loginButton.addEventListener("click", login);
+loginForm.addEventListener("submit", login);
+// loginButton.addEventListener("click", login);
 
-function login() {
+function login(e) {
+  e.preventDefault();
   let attempt = {
     userName: userTextbox.value,
     password: passTextbox.value,
@@ -22,16 +24,18 @@ function login() {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       if (data.token) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
         window.location.href = timeSheetsUrl;
       } else {
-        userTextbox.value = "";
-        passTextbox.value = "";
+        console.log(data);
+        throw data.title;
       }
     })
     .catch(err => {
       console.error(err);
+      userTextbox.value = "";
+      passTextbox.value = "";
     });
 }

@@ -26,7 +26,7 @@ namespace CivicQuestApi.Controllers
         // POST: api/login/ with body
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<LoginCreds>> CreateToken([FromBody]LoginCreds attempt)
+        public async Task<ActionResult> CreateToken([FromBody]User attempt)
         {
 
             var user = await _authService.Authenticate(attempt);
@@ -34,7 +34,7 @@ namespace CivicQuestApi.Controllers
             if (user != null)
             {
                 var tokenString = _authService.BuildToken(user);
-                return Ok(new { token = tokenString });
+                return Ok(new { token = tokenString, userId = user.id });
             }
 
             return ValidationProblem();

@@ -46,11 +46,14 @@ namespace CivicQuestApi
             });
             services.AddDbContext<CQContext>(opt =>
                 opt.UseInMemoryDatabase("CQList"));
+            services.AddDbContext<TimesheetsContext>(opt =>
+                opt.UseInMemoryDatabase("TimesheetList"));
             services.AddDbContext<LoginContext>(opt =>
                 opt.UseInMemoryDatabase("LoginList"));
             services.AddDbContext<UserContext>(opt =>
                 opt.UseInMemoryDatabase("UserList"));
             services.AddTransient<AuthenticateService>();
+            services.AddTransient<TimesheetsService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
