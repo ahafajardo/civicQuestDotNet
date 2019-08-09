@@ -11,6 +11,10 @@
 .time-entry {
   margin-bottom: $margin;
   display: flex;
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .time-details {
