@@ -1,0 +1,15 @@
+.add-time-entry {
+  padding: 0 $padding/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $margin;
+  &--hidden {
+    display: none;
+  }
+}
+
+.add-time-entry__action {
+  padding: $padding/2 $padding;
+  flex: 1;
+}
