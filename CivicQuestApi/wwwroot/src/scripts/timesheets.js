@@ -5,17 +5,41 @@ const timeEntries = document.querySelector(".time-entries");
 const addTimeEntry = document.querySelector(".add-time-entry");
 const showAddTimeEntryButton = addTimeEntry.querySelector("button");
 const addTimeEntryForm = document.querySelector(".time-entry--hidden");
+const addTimeEntryStamps = addTimeEntryForm.querySelectorAll("input");
+const addTimeEntryNotes = addTimeEntryForm.querySelector(".time-info__desc");
 const hideAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--danger");
+const saveAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--secondary");
+const timerAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--primary");
 
 let timesheets = [];
 
 window.addEventListener("DOMContentLoaded", getTimesheets);
+saveAddTimeEntryButton.addEventListener("click", saveAddTimeEntry);
 showAddTimeEntryButton.addEventListener("click", toggleAddTimeEntry);
 hideAddTimeEntryButton.addEventListener("click", toggleAddTimeEntry);
+
+function saveAddTimeEntry() {
+  addTimesheet();
+}
 
 function toggleAddTimeEntry() {
   addTimeEntry.classList.toggle("add-time-entry--hidden");
   addTimeEntryForm.classList.toggle("time-entry--hidden");
+}
+
+function editTimeEntry(timeEntry, id) {
+  const stamps = timeEntry.querySelectorAll("input");
+  const notes = timeEntry.querySelector(".time-info__desc");
+  if (timeEntry.dataset.editing == "false") {
+    stamps.forEach(stamp => stamp.removeAttribute("disabled"));
+    notes.removeAttribute("disabled");
+  } else {
+    stamps.forEach(stamp => stamp.setAttribute("disabled", ""));
+    notes.setAttribute("disabled", "");
+    updateTimesheet(id, stamps, notes);
+  }
+  const editing = timeEntry.getAttribute("data-editing");
+  timeEntry.setAttribute("data-editing", editing == "true" ? "false" : "true");
 }
 
 function getTimesheets() {
@@ -50,6 +74,7 @@ function getTimesheets() {
       timesheets.forEach(timesheet => {
         const timeEntryHTML = document.createElement("div");
         timeEntryHTML.classList.add("time-entry");
+        timeEntryHTML.setAttribute("data-editing", false);
         timeEntryHTML.innerHTML = `
         <div class="time-details">
             <div class="time-stamps">
@@ -58,25 +83,25 @@ function getTimesheets() {
                 <input type="text" class="input time-stamp__input" value="${timesheet.date.replace(
     /-/g,
     "/",
-  )}" placeholder="YYYY/DD/MM" disabled="true"/>
+  )}" placeholder="YYYY/DD/MM" disabled/>
             </div>
               <div class="time-stamp">
                 <p class="time-stamp__text">Start</p>
                 <input type="text" class="input time-stamp__input" value="${
   timesheet.startTime
-}" placeholder="00:00:00" disabled="true"/>
+}" placeholder="00:00:00" disabled/>
               </div>
               <div class="time-stamp">
                 <p class="time-stamp__text">End</p>
                 <input type="text" class="input time-stamp__input" value="${
   timesheet.endTime
-}" placeholder="00:00:00" disabled="true"/>
+}" placeholder="00:00:00" disabled/>
               </div>
             </div>
             <!-- /.time-stamps -->
             <div class="time-info">
               <label class="time-info__label">Notes</label>
-              <textarea class="input time-info__desc " placeholder="Write notes here..." disabled="true">${
+              <textarea class="input time-info__desc" placeholder="Write notes here..." disabled>${
   timesheet.notes
 }</textarea>
             </div>
@@ -90,6 +115,10 @@ function getTimesheets() {
           </div>
           <!-- /.time-actions -->
         `;
+        const editButton = timeEntryHTML.querySelector(".btn--secondary");
+        editButton.addEventListener("click", editTimeEntry.bind(editButton, timeEntryHTML, timesheet.id));
+        const deleteButton = timeEntryHTML.querySelector(".btn--danger");
+        deleteButton.addEventListener("click", deleteTimesheet.bind(deleteButton, timesheet.id));
         timeEntries.appendChild(timeEntryHTML);
       });
     })
@@ -99,4 +128,73 @@ function getTimesheets() {
       window.location.href = returnUrl;
       console.error(err);
     });
+}
+
+function addTimesheet() {
+  let token = localStorage.getItem("token");
+  let userId = localStorage.getItem("userId");
+  const timesheet = {
+    userId: userId,
+    start: `${addTimeEntryStamps[0].value}T${addTimeEntryStamps[1].value}`,
+    end: `${addTimeEntryStamps[0].value}T${addTimeEntryStamps[2].value}`,
+    notes: addTimeEntryNotes.value,
+  };
+
+  fetch(timeUri + `/${userId}`, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(timesheet),
+  })
+    .then(() => {
+      addTimeEntryStamps.forEach(stamp => (stamp.value = ""));
+      addTimeEntryNotes.value = "";
+      toggleAddTimeEntry();
+      getTimesheets();
+    })
+    .catch(err => console.error(err));
+}
+
+function updateTimesheet(id, stamps, notes) {
+  let token = localStorage.getItem("token");
+  let userId = localStorage.getItem("userId");
+  const timesheet = {
+    id: id,
+    userId: userId,
+    start: `${stamps[0].value}T${stamps[1].value}`,
+    end: `${stamps[0].value}T${stamps[2].value}`,
+    notes: notes.value,
+  };
+
+  fetch(timeUri + `/${userId}/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(timesheet),
+  })
+    .then(() => {
+      stamps.forEach(stamp => (stamp.value = ""));
+      notes.value = "";
+      getTimesheets();
+    })
+    .catch(err => console.error(err));
+}
+
+function deleteTimesheet(id) {
+  let token = localStorage.getItem("token");
+  let userId = localStorage.getItem("userId");
+  fetch(timeUri + `/${userId}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+    .then(() => getTimesheets())
+    .catch(err => console.error(err));
 }
