@@ -34,10 +34,17 @@
       <h1 class="info-timer__value">0</h1>
       <p class="info-timer__text">hours worked</p>
     </div>
+    <div class="add-time-entry">
+      <button class="btn btn--primary add-time-entry__action">+ Add a Time Entry</button>
+    </div>
     <div class="time-entries">
       <div class="time-entry time-entry--hidden">
         <div class="time-details">
           <div class="time-stamps">
+            <div class="time-stamp">
+              <p class="time-stamp__text">Date</p>
+              <input type="text" class="input time-stamp__input" placeholder="YYYY/DD/MM" />
+            </div>
             <div class="time-stamp">
               <p class="time-stamp__text">Start</p>
               <input type="text" class="input time-stamp__input" placeholder="00:00:00" />
@@ -56,9 +63,9 @@
         </div>
         <!-- /.time-details -->
         <div class="time-actions">
-          <a href="#" class="btn btn--primary time-action">start</a>
-          <a href="#" class="btn btn--secondary time-action">edit</a>
-          <a href="#" class="btn btn--danger time-action">del</a>
+          <button class="btn btn--primary time-action">start</button>
+          <button class="btn btn--secondary time-action">save</button>
+          <button class="btn btn--danger time-action">cancel</button>
         </div>
         <!-- /.time-actions -->
       </div>

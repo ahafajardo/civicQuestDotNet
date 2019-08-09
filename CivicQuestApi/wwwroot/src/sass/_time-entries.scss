@@ -38,6 +38,9 @@
   &:first-child {
     margin-right: $margin;
   }
+  &:last-child {
+    margin-left: $margin;
+  }
 }
 
 .time-stamp__text {
