@@ -36,10 +36,10 @@ namespace CivicQuestApi.Controllers
             return Ok(timesheet);
         }
 
-        [HttpPost("{userId}/{id}"), Authorize]
-        public async Task<ActionResult> PostTimesheet(long id, long userId, [FromBody]Timesheet sheet)
+        [HttpPost("{userId}"), Authorize]
+        public async Task<ActionResult> PostTimesheet(long userId, [FromBody]Timesheet sheet)
         {
-            var timesheet = await _timeService.PostTimesheet(id, userId, sheet);
+            var timesheet = await _timeService.PostTimesheet(userId, sheet);
 
             return CreatedAtAction(nameof(PostTimesheet), timesheet);
         }

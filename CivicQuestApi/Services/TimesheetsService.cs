@@ -40,9 +40,9 @@ namespace CivicQuestApi.Services
             return timesheet;
         }
 
-        public async Task<Timesheet> PostTimesheet(long id, long userId, Timesheet sheet)
+        public async Task<Timesheet> PostTimesheet(long userId, Timesheet sheet)
         {
-            if (id != sheet.id || userId != sheet.userId)
+            if (userId != sheet.userId)
             {
                 return null;
             }
