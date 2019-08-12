@@ -1,15 +1,15 @@
-const timeUri = "api/time";
-const returnUrl = "/";
+const timeUri = "api/time",
+  returnUrl = "/";
 
-const timeEntries = document.querySelector(".time-entries");
-const addTimeEntry = document.querySelector(".add-time-entry");
-const showAddTimeEntryButton = addTimeEntry.querySelector("button");
-const addTimeEntryForm = document.querySelector(".time-entry--hidden");
-const addTimeEntryStamps = addTimeEntryForm.querySelectorAll("input");
-const addTimeEntryNotes = addTimeEntryForm.querySelector(".time-info__desc");
-const hideAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--danger");
-const saveAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--secondary");
-const timerAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--primary");
+const timeEntries = document.querySelector(".time-entries"),
+  addTimeEntry = document.querySelector(".add-time-entry"),
+  showAddTimeEntryButton = addTimeEntry.querySelector("button"),
+  addTimeEntryForm = document.querySelector(".time-entry--hidden"),
+  addTimeEntryStamps = addTimeEntryForm.querySelectorAll("input"),
+  addTimeEntryNotes = addTimeEntryForm.querySelector(".time-info__desc"),
+  hideAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--danger"),
+  saveAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--secondary"),
+  timerAddTimeEntryButton = addTimeEntryForm.querySelector(".btn--primary");
 
 let timesheets = [];
 
@@ -28,10 +28,11 @@ function toggleAddTimeEntry() {
 }
 
 function editTimeEntry(button, timeEntry, id) {
-  const stamps = timeEntry.querySelectorAll("input");
-  const notes = timeEntry.querySelector(".time-info__desc");
-  const editButton = timeEntry.querySelector(".btn--secondary");
-  const deleteButton = timeEntry.querySelector(".btn--danger");
+  const stamps = timeEntry.querySelectorAll("input"),
+    notes = timeEntry.querySelector(".time-info__desc"),
+    editButton = timeEntry.querySelector(".btn--secondary"),
+    deleteButton = timeEntry.querySelector(".btn--danger");
+
   if (timeEntry.dataset.editing == "false") {
     stamps.forEach(stamp => stamp.removeAttribute("disabled"));
     notes.removeAttribute("disabled");
@@ -51,8 +52,8 @@ function editTimeEntry(button, timeEntry, id) {
 }
 
 function getTimesheets() {
-  let token = localStorage.getItem("token");
-  let userId = localStorage.getItem("userId");
+  let token = localStorage.getItem("token"),
+    userId = localStorage.getItem("userId");
   fetch(timeUri + `/${userId}`, {
     method: "GET",
     headers: {
@@ -142,8 +143,8 @@ function getTimesheets() {
 }
 
 function addTimesheet() {
-  let token = localStorage.getItem("token");
-  let userId = localStorage.getItem("userId");
+  let token = localStorage.getItem("token"),
+    userId = localStorage.getItem("userId");
   const timesheet = {
     userId: userId,
     start: `${addTimeEntryStamps[0].value}T${addTimeEntryStamps[1].value}`,
@@ -170,8 +171,8 @@ function addTimesheet() {
 }
 
 function updateTimesheet(id, stamps, notes) {
-  let token = localStorage.getItem("token");
-  let userId = localStorage.getItem("userId");
+  let token = localStorage.getItem("token"),
+    userId = localStorage.getItem("userId");
   const timesheet = {
     id: id,
     userId: userId,
@@ -198,8 +199,8 @@ function updateTimesheet(id, stamps, notes) {
 }
 
 function deleteTimesheet(id) {
-  let token = localStorage.getItem("token");
-  let userId = localStorage.getItem("userId");
+  let token = localStorage.getItem("token"),
+    userId = localStorage.getItem("userId");
   fetch(timeUri + `/${userId}/${id}`, {
     method: "DELETE",
     headers: {

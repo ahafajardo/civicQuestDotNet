@@ -1,12 +1,11 @@
-const uri = "api/login";
-const timeSheetsUrl = "timesheets.html";
+const uri = "api/login",
+  timeSheetsUrl = "timesheets.html";
 
-const loginForm = document.querySelector(".login");
-const userTextbox = document.querySelector("input[type='text']");
-const passTextbox = document.querySelector("input[type='password']");
+const loginForm = document.querySelector(".login"),
+  userTextbox = document.querySelector("input[type='text']"),
+  passTextbox = document.querySelector("input[type='password']");
 
 loginForm.addEventListener("submit", login);
-// loginButton.addEventListener("click", login);
 
 function login(e) {
   e.preventDefault();
