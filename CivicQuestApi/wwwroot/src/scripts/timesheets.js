@@ -27,16 +27,24 @@ function toggleAddTimeEntry() {
   addTimeEntryForm.classList.toggle("time-entry--hidden");
 }
 
-function editTimeEntry(timeEntry, id) {
+function editTimeEntry(button, timeEntry, id) {
   const stamps = timeEntry.querySelectorAll("input");
   const notes = timeEntry.querySelector(".time-info__desc");
+  const editButton = timeEntry.querySelector(".btn--secondary");
+  const deleteButton = timeEntry.querySelector(".btn--danger");
   if (timeEntry.dataset.editing == "false") {
     stamps.forEach(stamp => stamp.removeAttribute("disabled"));
     notes.removeAttribute("disabled");
+    editButton.textContent = "save";
+    deleteButton.textContent = "cancel";
+    if (button == deleteButton) deleteTimesheet(id);
   } else {
     stamps.forEach(stamp => stamp.setAttribute("disabled", ""));
     notes.setAttribute("disabled", "");
-    updateTimesheet(id, stamps, notes);
+    editButton.textContent = "edit";
+    deleteButton.textContent = "del";
+    if (button == editButton) updateTimesheet(id, stamps, notes);
+    else getTimesheets();
   }
   const editing = timeEntry.getAttribute("data-editing");
   timeEntry.setAttribute("data-editing", editing == "true" ? "false" : "true");
@@ -116,9 +124,12 @@ function getTimesheets() {
           <!-- /.time-actions -->
         `;
         const editButton = timeEntryHTML.querySelector(".btn--secondary");
-        editButton.addEventListener("click", editTimeEntry.bind(editButton, timeEntryHTML, timesheet.id));
+        editButton.addEventListener("click", editTimeEntry.bind(editButton, editButton, timeEntryHTML, timesheet.id));
         const deleteButton = timeEntryHTML.querySelector(".btn--danger");
-        deleteButton.addEventListener("click", deleteTimesheet.bind(deleteButton, timesheet.id));
+        deleteButton.addEventListener(
+          "click",
+          editTimeEntry.bind(deleteButton, deleteButton, timeEntryHTML, timesheet.id),
+        );
         timeEntries.appendChild(timeEntryHTML);
       });
     })
