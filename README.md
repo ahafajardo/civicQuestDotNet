@@ -1,41 +1,51 @@
 # CivicQuest .NET
 
-CivicQuest is a community service logging application that is targeted toward student volunteers, volunteer orginantions, and school staff. While assignment submission, school notifications, and even test administration have their own digital counterparts, mandated community service has lagged behind, usually being tracked by pen and paper, without so much as a shred of true accountability. To cover this gap, CivicQuest is planned to offer the following features:
+CivicQuest is a community service logging application that is targeted toward student volunteers, volunteer organizations, and school staff. While assignment submission, school notifications, and even test administration have their own digital counterparts, mandated community service has lagged behind, usually being tracked by pen and paper, without so much as a shred of true accountability. To cover this gap, CivicQuest is planned to offer the following features:
 
-* Visibility of tracked hours to volunteer, school staff, and the organization they volunteer for
-* Approval of organizations to work for in volunteers' local area
-* Revoking of invalid or falsely reported service hours.
+- Visibility of tracked hours to volunteer, school staff, and the organization they volunteer for
+- Approval of organizations to work for in volunteers' local area
+- Revoking of invalid or falsely reported service hours.
 
 This is a version of CivicQuest that uses .NET Core as a back-end.
 
 ## Installation
 
 To run this project, you'll need the following tools:
-* NodeJS
-* Node Package Manager
-* ASP .NET Core
 
-You can use any text editor or IDE you like, but Visual Studio Code is reccomended.
+- NodeJS
+- Node Package Manager
+- ASP .NET Core
+
+You can use any text editor or IDE you like, but Visual Studio Code is recommended.
 
 After cloning the repository, here are the steps to get this application functioning:
 
 1. Navigate to the `CivicQuestApi/` folder.
+
 ```
 cd CivicQuestApi/
 ```
-2. Run an Node Package Manager install to collect the required packages from `package.json`.
+
+2. Run a Node Package Manager install to collect the required packages from `package.json`.
+
 ```
 npm install
 ```
+
 3. Run the project in dev mode to create a `build/` folder of the application's JavaScript, HTML, and CSS from the `src/` folder.
+
 ```
 npm run dev
 ```
+
 4. Build the C# project.
+
 ```
 dotnet build CivicQuestApi.csproj
 ```
+
 5. Run the C# project.
+
 ```
 dotnet run CivicQuestApi.csproj
 ```
@@ -62,20 +72,24 @@ Please comment the name of a container element's main class underneath its endin
 
 Please follow this sequence when writing scripts for each page in the application's front-end:
 
-1. Constant Declaration 
-  * URI Strings (for routing)
-  * DOM Elements
-  * Etc.
+1. Constant Declaration
+
+- URI Strings (for routing)
+- DOM Elements
+- Etc.
+
 2. Variable Declaration
-  * URI Strings (for routing)
-  * DOM Elements
-  * Etc.
+
+- URI Strings (for routing)
+- DOM Elements
+- Etc.
+
 3. Bind DOM Events
 4. Function Declaration
 
 #### CSS
 
-Please follow the [BEM conventions](http://getbem.com/) when writing new style rules. Also, do not get carried away with using SASS's `&` operator. Modifiers with a small number of styling rules are an ideal case for using `&`. Nesting `&`'s  should be avoided outright, and elements within blocks should generally be defined without the use of `&`.
+Please follow the [BEM conventions](http://getbem.com/) when writing new style rules. Also, do not get carried away with using SASS's `&` operator. Modifiers with a small number of styling rules are an ideal case for using `&`. Nesting `&`'s should be avoided outright, and elements within blocks should generally be defined without the use of `&`.
 
 ### Git Commits
 
