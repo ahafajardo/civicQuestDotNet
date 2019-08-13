@@ -93,7 +93,7 @@ Please follow the [BEM conventions](http://getbem.com/) when writing new style r
 
 ### Git Commits
 
-When you commit your changes to your branch, please make a habit of cataloging a summary of your most significant changes. You don't need to write more than a sentence or two, but it helps all the same.
+When you commit your changes to your branch, please make a habit of summarizing your most significant changes. You don't need to write more than a sentence or two, but it helps all the same.
 
 ## Final Words
 
